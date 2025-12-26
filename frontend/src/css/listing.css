@@ -25,6 +25,7 @@ html[dir="rtl"] #listing {
   border-color: var(--divider);
   position: relative;
   display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
   color: var(--textPrimary);
   transition:
@@ -54,6 +55,13 @@ html[dir="rtl"] #listing {
   font-weight: bold;
 }
 
+#listing .item-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  justify-content:space;
+}
 #listing .item i {
   font-size: 4em;
   margin-right: 0.1em;
@@ -66,6 +74,28 @@ html[dir="rtl"] #listing {
   object-fit: cover;
   margin-right: 0.1em;
   vertical-align: bottom;
+}
+#listing .item-actions {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0.5em;
+}
+#listing .copy-btn{
+   display: flex;
+   align-items: center;
+   gap: 4px;
+   justify-content: center;
+   padding: 0.5em;
+   cursor: pointer;
+   border: none;
+   border-radius: 0.2em;
+   background-color: #f0f0f0;
+}
+#listing .copy-btn:hover {
+  background-color: #e0e0e0;
 }
 
 .message {
@@ -107,14 +137,6 @@ html[dir="rtl"] #listing {
 
 #listing.mosaic .header {
   display: none;
-}
-
-#listing.mosaic .item div:first-of-type {
-  width: 5em;
-}
-
-#listing.mosaic .item div:last-of-type {
-  width: calc(100% - 5vw);
 }
 
 #listing.mosaic.gallery .item div:first-of-type {

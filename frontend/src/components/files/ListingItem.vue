@@ -22,23 +22,47 @@
     :data-ext="getExtension(name).toLowerCase()"
     @contextmenu="contextMenu"
   >
-    <div>
-      <img
-        v-if="!readOnly && type === 'image' && isThumbsEnabled"
-        v-lazy="thumbnailUrl"
-      />
-      <i v-else class="material-icons"></i>
+    <div class="item-content">
+      <div>
+        <img
+          v-if="!readOnly && type === 'image' && isThumbsEnabled"
+          v-lazy="thumbnailUrl"
+        />
+        <i v-else class="material-icons"></i>
+      </div>
+
+      <div>
+        <p class="name">{{ name }}</p>
+
+        <p v-if="isDir" class="size" data-order="-1">&mdash;</p>
+        <p v-else class="size" :data-order="humanSize()">{{ humanSize() }}</p>
+
+        <p class="modified">
+          <time :datetime="modified">{{ humanTime() }}</time>
+        </p>
+      </div>
     </div>
-
-    <div>
-      <p class="name">{{ name }}</p>
-
-      <p v-if="isDir" class="size" data-order="-1">&mdash;</p>
-      <p v-else class="size" :data-order="humanSize()">{{ humanSize() }}</p>
-
-      <p class="modified">
-        <time :datetime="modified">{{ humanTime() }}</time>
-      </p>
+    <div v-if="!isDir" class="item-actions">
+      <button class="copy-btn" @click.stop="copyLink(url)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <g
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+          >
+            <path d="M16 3H4v13" />
+            <path d="M8 7h12v12a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z" />
+          </g>
+        </svg>
+        Copy
+      </button>
     </div>
   </div>
 </template>
@@ -65,8 +89,27 @@ const startPosition = ref<{ x: number; y: number } | null>(null);
 const moveThreshold = ref<number>(10);
 
 const $showError = inject<IToastError>("$showError")!;
+const $showSuccess = inject<IToastSuccess>("$showSuccess")!;
 const router = useRouter();
 
+const basePath = "https://resources.camthink.ai";
+const copyLink = async (url: string) => {
+  try {
+    // 去掉 url 中的 /files 前缀
+    const cleanUrl = url.startsWith("/files")
+      ? url.replace(/^\/files/, "")
+      : url;
+    // 确保 basePath 和 cleanUrl 之间正确拼接
+    const separator =
+      basePath.endsWith("/") || cleanUrl.startsWith("/") ? "" : "/";
+    const fullUrl = `${basePath}${separator}${cleanUrl}`;
+    await navigator.clipboard.writeText(fullUrl);
+    $showSuccess("复制成功");
+  } catch (error) {
+    console.error("复制失败:", error);
+    $showError("复制失败");
+  }
+};
 const props = defineProps<{
   name: string;
   isDir: boolean;
