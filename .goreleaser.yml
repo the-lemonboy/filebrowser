@@ -55,8 +55,8 @@ dockers:
     goos: linux
     goarch: amd64
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-amd64"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-amd64"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-amd64"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-amd64"
     extra_files:
       - docker
   - dockerfile: Dockerfile
@@ -72,8 +72,8 @@ dockers:
     goos: linux
     goarch: arm64
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-arm64"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-arm64"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-arm64"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-arm64"
     extra_files:
       - docker
   - dockerfile: Dockerfile
@@ -90,8 +90,8 @@ dockers:
     goarch: arm
     goarm: "6"
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-armv6"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-armv6"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-armv6"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-armv6"
     extra_files:
       - docker
   - dockerfile: Dockerfile
@@ -108,8 +108,8 @@ dockers:
     goarch: arm
     goarm: "7"
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-armv7"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-armv7"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-armv7"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-armv7"
     extra_files:
       - docker
 
@@ -127,8 +127,8 @@ dockers:
     goos: linux
     goarch: amd64
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-amd64-s6"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-amd64-s6"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-amd64-s6"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-amd64-s6"
     extra_files:
       - docker
   - dockerfile: Dockerfile.s6
@@ -144,40 +144,40 @@ dockers:
     goos: linux
     goarch: arm64
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-arm64-s6"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-arm64-s6"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-arm64-s6"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-arm64-s6"
     extra_files:
       - docker
 
 docker_manifests:
-  - name_template: "the-lemonboy/filebrowser:latest"
+  - name_template: "lemonboy771/camthink-filebrowser:latest"
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-amd64"
-      - "the-lemonboy/filebrowser:{{ .Tag }}-arm64"
-      - "the-lemonboy/filebrowser:{{ .Tag }}-armv7"
-  - name_template: "the-lemonboy/filebrowser:{{ .Tag }}"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-amd64"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-arm64"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-armv7"
+  - name_template: "lemonboy771/camthink-filebrowser:{{ .Tag }}"
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-amd64"
-      - "the-lemonboy/filebrowser:{{ .Tag }}-arm64"
-      - "the-lemonboy/filebrowser:{{ .Tag }}-armv7"
-  - name_template: "the-lemonboy/filebrowser:v{{ .Major }}"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-amd64"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-arm64"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-armv7"
+  - name_template: "lemonboy771/camthink-filebrowser:v{{ .Major }}"
     image_templates:
-      - "the-lemonboy/filebrowser:v{{ .Major }}-amd64"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-arm64"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-armv7"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-amd64"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-arm64"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-armv7"
   ## s6 image manifests
-  - name_template: "the-lemonboy/filebrowser:s6"
+  - name_template: "lemonboy771/camthink-filebrowser:s6"
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-amd64-s6"
-      - "the-lemonboy/filebrowser:{{ .Tag }}-arm64-s6"
-  - name_template: "the-lemonboy/filebrowser:{{ .Tag }}-s6"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-amd64-s6"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-arm64-s6"
+  - name_template: "lemonboy771/camthink-filebrowser:{{ .Tag }}-s6"
     image_templates:
-      - "the-lemonboy/filebrowser:{{ .Tag }}-amd64-s6"
-      - "the-lemonboy/filebrowser:{{ .Tag }}-arm64-s6"
-  - name_template: "the-lemonboy/filebrowser:v{{ .Major }}-s6"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-amd64-s6"
+      - "lemonboy771/camthink-filebrowser:{{ .Tag }}-arm64-s6"
+  - name_template: "lemonboy771/camthink-filebrowser:v{{ .Major }}-s6"
     image_templates:
-      - "the-lemonboy/filebrowser:v{{ .Major }}-amd64-s6"
-      - "the-lemonboy/filebrowser:v{{ .Major }}-arm64-s6"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-amd64-s6"
+      - "lemonboy771/camthink-filebrowser:v{{ .Major }}-arm64-s6"
 
 homebrew_casks:
   - name: filebrowser
@@ -187,7 +187,7 @@ homebrew_casks:
     commit_author:
       name: FileBrowser Robot
       email: robot@filebrowser.org
-    homepage: https://github.com/the-lemonboy/filebrowser
+    homepage: https://github.com/lemonboy771/camthink-filebrowser
     description: File Browser is a create-your-own-cloud-kind of software where you can install it on a server, direct it to a path and then access your files through a nice web interface
     hooks:
       post:
